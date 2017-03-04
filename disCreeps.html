@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <title>Go Fly A Kite</title>
+
+    <link rel="stylesheet" href="main.css">
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+</head>
+
+<body>
+    <div class="mainScreen">
+        <div class="kiteWindow">
+            <div div="banksyGirl">
+                <img src="girl-banksy-new1.png" alt="banksy girl" style="margin-top: 439px">
+            </div>
+            <div class="banksyBalloon">
+                <img class="balloon noWind" src="balloon-banksy-new1.png" alt="banksy balloon">
+            </div>
+        </div>
+        <div class="infoPanel">
+            <div class="windInfo">
+                <div id="location">
+                </div>
+                <div id="windSpeed">
+                </div>
+                <div id="windDirection">
+                </div>
+            </div>
+            <div class="map">
+                <div id="map"></div>
+            </div>
+            <div class="twitterTimeline">
+              <a class="twitter-timeline" data-width="352" data-height="300" data-theme="dark" data-link-color="#F5F8FA" href="https://twitter.com/breeezy_bot">Tweets by breeezy_bot</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+              <blockquote class="twitter-tweet" lang="en">
+                <a href="https://twitter.com/hashtag/javascript?src=hash"></a>
+              </blockquote>
+              <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            </div>
+
+        </div>
+    </div>
+    <div class="twitterTicker">
+      <div>
+        <FORM NAME="ticker">
+          <INPUT NAME="text" SIZE=100 VALUE="Welcome disCreeps Go Fly A Kite">
+          </FORM>
+        </div>
+    </div>
+    <!-- <div id="coords"></div> -->
+    <script type="text/javascript" src="main.js"></script>
+    <!-- <script>
+        var myLatLng = {
+            lat: 39.7558146,
+            lng: -105.0426646
+        };
+
+        function initMap() {
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 4,
+                center: myLatLng,
+                mapTypeControl: true,
+                mapTypeControlOptions: {
+                    style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
+                    position: google.maps.ControlPosition.TOP_CENTER
+                },
+                zoomControl: true,
+                zoomControlOptions: {
+                    position: google.maps.ControlPosition.LEFT_CENTER
+                },
+                scaleControl: true,
+                streetViewControl: true,
+                streetViewControlOptions: {
+                    position: google.maps.ControlPosition.LEFT_TOP
+                },
+                fullscreenControl: true
+            });
+            var marker = new google.maps.Marker({
+                position: myLatLng,
+                map: map
+            });
+
+
+            // Will allow us to set inital lat/long of map (uncomment coors div above)
+            //       var coordsDiv = document.getElementById('coords');
+            //       map.controls[google.maps.ControlPosition.TOP_CENTER].push(coordsDiv);
+            //       map.addListener('mousemove', function(event) {
+            //           coordsDiv.textContent =
+            //               'lat: ' + Math.round(event.latLng.lat()) + ', ' +
+            //               'lng: ' + Math.round(event.latLng.lng());
+            //       });
+            map.addListener('click', function(event) {
+                myLatLng = {
+                    lat: Math.round(event.latLng.lat()),
+                    lng: Math.round(event.latLng.lng())
+                };
+                console.log(marker.position);
+                checkWind(Math.round(event.latLng.lat()), Math.round(event.latLng.lng()));
+                initMap();
+
+                $('#location').text(data.location.city + ", " + data.location.state)
+                $('#localTime').text('Local Time: ' + data.current_observation.local_time_rfc822)
+                $('#windSpeed').text('Wind Speed: ' + data.current_observation.wind_mph + " MPH")
+                $('#windDirection').text('Wind Direction: ' + data.current_observation.wind_dir)
+
+                setKiteHeight(data.current_observation.wind_mph)
+            });
+
+            function checkWind(lat, lng) {
+                var url = "http://api.wunderground.com/api/68e3e7c9b741eaf5/geolookup/conditions/q/" + lat + ',' + lng + '.json';
+
+                // url += lat + ',' + lon + '.json';
+
+                $.get(url).then(function(data) {
+                    // console.log(data);
+                    console.log(data.current_observation.wind_mph);
+                    console.log(data.current_observation.wind_dir);
+                    console.log(data.location.city);
+                    console.log(data.location.state);
+                    console.log(data.location.country);
+                    console.log(data.current_observation.local_time_rfc822);
+                });
+            }
+
+            function setKiteHeight(speed) {
+                var balloon = document.querySelector('.balloon')
+                if (speed < 5) {
+                    balloon.classList = ""
+                    balloon.classList.add('balloon')
+                    balloon.classList.add('noWind')
+                } else if (speed >= 5 && speed < 10) {
+                    balloon.classList = ""
+                    balloon.classList.add('reallyLowWind')
+                    balloon.classList.add('wiggleVertical')
+                    balloon.classList.add('wiggleHorizontal')
+                    balloon.classList.add('balloon')
+                } else if (speed >= 10 && speed < 15) {
+                    balloon.classList = ""
+                    balloon.classList.add('lowWind')
+                    balloon.classList.add('wiggleVertical')
+                    balloon.classList.add('wiggleHorizontal')
+                    balloon.classList.add('balloon')
+                } else if (speed >= 15 && speed < 20) {
+                    balloon.classList = ""
+                    balloon.classList.add('medWind')
+                    balloon.classList.add('wiggleVertical')
+                    balloon.classList.add('wiggleHorizontal')
+                    balloon.classList.add('balloon')
+                } else if (speed >= 20 && speed < 25) {
+                    balloon.classList = ""
+                    balloon.classList.add('highWind')
+                    balloon.classList.add('wiggleVertical')
+                    balloon.classList.add('wiggleHorizontal')
+                    balloon.classList.add('balloon')
+                } else if (speed >= 25) {
+                    balloon.classList = ""
+                    balloon.classList.add('reallyHighWind')
+                    balloon.classList.add('balloon')
+                }
+            }
+        }
+    </script> -->
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwcwxZ3UtwwXvQ5iUfSEUnWnSChaNCwhQ&callback=initMap">
+    </script>
+</body>
+
+</html>
