@@ -79,4 +79,3 @@ function BotRetweet() {
 
 /* Initiate the Bot */
 BotInit();
-
