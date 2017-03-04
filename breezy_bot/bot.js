@@ -12,7 +12,7 @@ var TWITTER_ACCESS_TOKEN = '838100787272220672-tn7iIyOycas0FNev5GSOw7gBMHpQZRP';
 var TWITTER_ACCESS_TOKEN_SECRET = 'fnJiX9AkZTaBuVUmQGO1BSwtu12DKngeEawpCIlEY9kK8';
 
 /* Set Twitter search phrase */
-var TWITTER_SEARCH_PHRASE = '#breezy OR #windy OR #breeze OR #wind OR #kite OR #kites OR #kiteflying OR #goflyakite';
+var TWITTER_SEARCH_PHRASE = '#windy OR #wind OR #breezy OR #goflyakite';
 
 var Twit = require('twit');
 
@@ -27,7 +27,7 @@ console.log('The bot is running...');
 
 /* BotInit() : To initiate the bot */
 function BotInit() {
-	Bot.post('statuses/retweet/:id', { id: '669520341815836672' }, BotInitiated);
+	Bot.post('statuses/retweet/:id', { id: '669520341815836672'}, BotInitiated);
 
 	function BotInitiated (error, data, response) {
 		if (error) {
@@ -79,3 +79,4 @@ function BotRetweet() {
 
 /* Initiate the Bot */
 BotInit();
+
