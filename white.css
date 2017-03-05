@@ -1,33 +1,33 @@
 body {
   font-family: 'Permanent Marker', cursive;
-  max-height: 705px;
-  display: flex;
-  flex-direction: column;
+
 }
 
 .mainScreen {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 
 .kiteWindow {
   display: flex;
-  width: 75%;
-  height: 765px;
+  width: 100%;
+  height: 665px;
   background: #ccffff;
-  background-image: url(yellow-wall.jpg)
+  /*background-image: url(yellow-wall.jpg)*/
 }
 
 .infoPanel {
-  width: 25%;
-  background: red;
-  display: flex;
-  flex-direction: column;
+  width: 100vw;
+  background: #ffffff;
+  top: 710px;
+  display:flex;
+  justify-content:flex-start
 }
 
 .windInfo {
-  height: 18%;
-  background: #ffeeee;
+  height: 300px;
+  width: 30vw;
+  background: #fff6f6;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -35,8 +35,12 @@ body {
 }
 
 .map {
-  height: 70%;
+  height: 260px;
+  width: 50vw;
   background: #FFEECC;
+  padding-top: 37px;
+
+
 }
 
 .fullscreen {
@@ -52,12 +56,14 @@ body {
   width: 100%;
   height: 40px;
   position: absolute;
-  top: 770px;
+  top: 670px;
   left: 0;
 }
 
-.banksyGirl{
-  top: 300px;
+.twitterTimeline {
+  width: 30vw;
+}
+.banksyGirl img{
 }
 
 
@@ -110,7 +116,7 @@ body {
 }
 .noWind {
   margin-left: 200px;
-  margin-top: 478px;
+  margin-top: 328px;
   transform: rotate(179deg);
 }
 
@@ -140,7 +146,7 @@ body {
 
 #map {
   border: solid 1px black;
-  height: 75%;
+  height: 100%;
 }
 
 #coords {
@@ -158,10 +164,4 @@ input {
   bottom: 3px;
   font-size: 20px;
   left: 150px;
-}
-
-.twitterTimeline {
-  height: 360px;
-  position: absolute;
-  top: 480px;
 }
