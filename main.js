@@ -144,6 +144,7 @@ function checkWind(lat, lng) {
   // console.log(data.location.state);
   // console.log(data.location.country);
   // console.log(data.current_observation.local_time_rfc822);
+	ScrollValue = ""
   ScrollValue += "     City: " + data.location.city.toString();
   ScrollValue += ", " + data.location.state.toString();
   ScrollValue += "     Wind: " + data.current_observation.wind_string.toString();
